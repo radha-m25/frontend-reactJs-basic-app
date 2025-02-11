@@ -37,11 +37,11 @@ const Login = () => {
   };
   return (
     <>
-      <h3>Login page</h3>
       <form onSubmit={handleSubmit}>
-        <div style={{ display: "flex", flexDirection: "column", width: "50%" }}>
+        <div className="form-container">
+        <h3>Login page</h3>
           <input
-            style={{ margin: "20px 20px" }}
+            className="input-field"
             type="email"
             name="email"
             placeholder="Email"
@@ -49,14 +49,14 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            style={{ margin: "20px 20px" }}
+            className="input-field"
             type="password"
             name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button style={{ width: "50%", margin: "20px 20px" }} type="submit">
+          <button className="user-btn" type="submit">
             submit
           </button>
         </div>
