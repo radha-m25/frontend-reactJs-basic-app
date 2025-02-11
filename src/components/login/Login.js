@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,15 +23,16 @@ const Login = () => {
         body: JSON.stringify(userDetails),
       });
 
-      const data = await response.json();
+      // const data = await response.json();
 
       if(response.ok) {
-        console.log("login successful" + data);
+        navigate("/");
+        alert("login successful");
       }else{
-        console.log("login failed" + data);
+        alert("login failed, check your credential");
       }
     }catch(err) {
-      console.log("Something went wrong, please try it again: " + err.message);
+      alert("Something went wrong, please try it again: " + err.message);
     }
   };
   return (

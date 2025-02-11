@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
+  const [gender,setGender] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +16,8 @@ const Signup = () => {
         firstName: firstName,
         email: email,
         password: password,
-        phoneNum: phoneNum
+        phoneNum: phoneNum,
+        gender: gender
     }
     
     try {
@@ -24,15 +29,16 @@ const Signup = () => {
             body: JSON.stringify(user)
         })
     
-        const data = await response.json();
+        // const data = await response.json();
     
         if(response.ok) {
-            console.log("signup successful: " + data);
+            navigate("/login");
+            alert("signup successful");
         }else{
-            console.log("signup failed: " + data);
+            alert("signup failed, check your data is fulfilling the validations");
         }
     }catch(err){
-        console.log("something went wrong, please try it again: " + err.message);
+        alert("something went wrong, please try it again: " + err.message);
     }
 
   };
@@ -73,6 +79,14 @@ const Signup = () => {
             placeholder="phone num"
             value={phoneNum}
             onChange={(e) => setPhoneNum(e.target.value)}
+          />
+          <input
+            style={{ margin: "20px 20px" }}
+            name="gender"
+            type="text"
+            placeholder="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
           />
           <button style={{ width: "50%", margin: "20px 20px" }} type="submit">
             Submit
