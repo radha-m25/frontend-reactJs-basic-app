@@ -10,6 +10,26 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value);
+  }
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const handlePhoneNum = (e) => {
+    setPhoneNum(e.target.value);
+  }
+
+  const handleGender = (e) => {
+    setGender(e.target.value);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
@@ -53,7 +73,7 @@ const Signup = () => {
             type="text"
             placeholder="First Name"
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={handleFirstName}
           />
           <input
             className="input-field"
@@ -61,7 +81,7 @@ const Signup = () => {
             type="email"
             placeholder="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmail}
           />
           <input
             className="input-field"
@@ -69,7 +89,7 @@ const Signup = () => {
             type="password"
             placeholder="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePassword}
           />
           <input
             className="input-field"
@@ -77,7 +97,7 @@ const Signup = () => {
             type="text"
             placeholder="phone num"
             value={phoneNum}
-            onChange={(e) => setPhoneNum(e.target.value)}
+            onChange={handlePhoneNum}
           />
           <input
             className="input-field"
@@ -85,7 +105,7 @@ const Signup = () => {
             type="text"
             placeholder="gender"
             value={gender}
-            onChange={(e) => setGender(e.target.value)}
+            onChange={handleGender}
           />
           <button className="user-btn" type="submit">
             Submit

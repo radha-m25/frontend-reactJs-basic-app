@@ -7,6 +7,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userDetails = {
@@ -25,13 +33,13 @@ const Login = () => {
 
       // const data = await response.json();
 
-      if(response.ok) {
+      if (response.ok) {
         navigate("/");
         alert("login successful");
-      }else{
+      } else {
         alert("login failed, check your credential");
       }
-    }catch(err) {
+    } catch (err) {
       alert("Something went wrong, please try it again: " + err.message);
     }
   };
@@ -39,14 +47,14 @@ const Login = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="form-container">
-        <h3>Login page</h3>
+          <h3>Login page</h3>
           <input
             className="input-field"
             type="email"
             name="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmail}
           />
           <input
             className="input-field"
@@ -54,7 +62,7 @@ const Login = () => {
             name="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePassword}
           />
           <button className="user-btn" type="submit">
             submit
